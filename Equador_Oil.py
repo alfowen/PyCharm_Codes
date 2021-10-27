@@ -6,8 +6,10 @@ from scipy import stats
 # Import oil CSV into a dataframe
 path = '/Users/alf/Downloads/'
 pd_oil = pd.read_csv(path+'oil.csv')
+
 # Import oil train data into a dataframe
 pd_train = pd.read_csv(path+'train.csv')
+
 # Import transaction data into a dataframe
 pd_trans = pd.read_csv(path+'transactions.csv')
 
