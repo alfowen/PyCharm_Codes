@@ -103,7 +103,7 @@ data_grouped_month = pd_train.groupby('month').mean()['sales']
 data_grouped_year = pd_train.groupby('year').mean()['sales']
 
 # plt.plot(data_grouped_day, label='Sales by Day')
-# function to make 0-6 to sun - mon
+# function to make 0-6 to mon - sun
 # def day_month_year(val):
 #     if val == 0:
 #         return 'Mon'
