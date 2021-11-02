@@ -124,7 +124,7 @@ data_grouped_year = pd_train.groupby('year').mean()['sales']
 data_grouped_day_df = DataFrame(data_grouped_day).reset_index()
 data_grouped_month_df = DataFrame(data_grouped_month).reset_index()
 data_grouped_year_df = DataFrame(data_grouped_year).reset_index()
-# used a function and apply to decrypt the key value pair
+# used a function and apply to map the key value pair
 # data_grouped_day_df['day_in_words'] = data_grouped_day_df['day_of_week'].apply(day_month_year)
 # print(data_grouped_day_df.head())
 
@@ -169,3 +169,4 @@ plt.legend()
 
 plt.tight_layout()
 plt.show()
+
