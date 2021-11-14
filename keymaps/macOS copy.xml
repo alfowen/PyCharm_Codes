@@ -1,0 +1,18 @@
+<keymap version="1" name="macOS copy" parent="Mac OS X 10.5+">
+  <action id="CollapseExpandableComponent">
+    <keyboard-shortcut first-keystroke="meta subtract" />
+    <keyboard-shortcut first-keystroke="meta minus" />
+  </action>
+  <action id="EditorStartNewLine" />
+  <action id="ExpandExpandableComponent">
+    <keyboard-shortcut first-keystroke="meta add" />
+    <keyboard-shortcut first-keystroke="meta equals" />
+  </action>
+  <action id="OpenInRightSplit">
+    <mouse-shortcut keystroke="alt button1 doubleClick" />
+  </action>
+  <action id="Run">
+    <keyboard-shortcut first-keystroke="ctrl r" />
+    <keyboard-shortcut first-keystroke="shift enter" />
+  </action>
+</keymap>
