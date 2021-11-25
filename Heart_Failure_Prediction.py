@@ -217,6 +217,7 @@ for i in range(30):
             pickle.dump(log_reg, f)
 pickle_in = open('/Users/alf/Downloads/data_science/Heart_Failure.pickle', 'rb')
 log_reg = pickle.load(pickle_in)
+
 # ----------------------Pickle The Highest Accuracy rate----------------------
 
 
