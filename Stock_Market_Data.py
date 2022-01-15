@@ -188,5 +188,7 @@ def connect_to_db_update_insert(host_name, username, password, port):
 
 # # Connect and create table.
 # connect_to_db_table_creation(host_name, username, password, port)
+
+# Extract data using API and push the data to DB.
 pd_stock, new_header = call_api(stock_list, url, headers, params)
 connect_to_db_update_insert(host_name, username, password, port)
