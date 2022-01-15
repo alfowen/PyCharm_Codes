@@ -50,8 +50,8 @@ unix_time = int(unix_time)
 url = 'https://query1.finance.yahoo.com/v7/finance/download/' + stock_symbol
 
 # Input Parameters For the API call
-headers = {'user-agent':
-               'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36'}
+headers = {'user-agent':None}
+
 params = {'period1': unix_time,
           'period2': unix_time,
           # 'range': '1d',
