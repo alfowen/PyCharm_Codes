@@ -1,5 +1,6 @@
 # Import Libraries
 from datetime import datetime
+import datetime
 import requests
 import pandas as pd
 import csv
@@ -41,11 +42,11 @@ username = f.decrypt(file_list[2])
 password = f.decrypt(file_list[0])
 user_agent = f.decrypt(file_list[3])
 user_agent = user_agent.decode()
-print(user_agent)
 conn = None
 
 # Dynamic date and time  and convert to unix timestamp
-dt = datetime.now()
+dt = datetime.datetime.now()
+# dt = datetime.datetime.now() - datetime.timedelta(days=1)
 unix_time = time.mktime(dt.timetuple())
 unix_time = int(unix_time)
 
@@ -53,7 +54,7 @@ unix_time = int(unix_time)
 url = 'https://query1.finance.yahoo.com/v7/finance/download/' + stock_symbol
 
 # Input Parameters For the API call
-headers = {'user-agent': 'Mozilla/5.0(Macintosh;IntelMacOSX10_15_7)AppleWebKit/537.36(KHTML,likeGecko)Chrome/96.0.4664.93Safari/537.36'}
+headers = {'user-agent': user_agent}
 
 params = {'period1': unix_time,
           'period2': unix_time,
@@ -118,7 +119,7 @@ def call_api(stock_list, headers, params):
         ['Open', 'High', 'Low', 'Close', 'Adj_Close']].astype(float)
     pd_stock[['Open', 'High', 'Low', 'Close', 'Adj_Close']] = pd_stock[
         ['Open', 'High', 'Low', 'Close', 'Adj_Close']].round(decimals=2)
-    pd_stock['Insert_Update_TS'] = datetime.now()
+    pd_stock['Insert_Update_TS'] = datetime.datetime.now()
     new_header = [*new_header, *['Stock_Symbol', 'Insert_Update_TS']]
     return pd_stock, new_header
 
@@ -194,4 +195,5 @@ def connect_to_db_update_insert(host_name, username, password, port):
 
 # Extract data using API and push the data to DB.
 pd_stock, new_header = call_api(stock_list, headers, params)
+print(pd_stock)
 connect_to_db_update_insert(host_name, username, password, port)
