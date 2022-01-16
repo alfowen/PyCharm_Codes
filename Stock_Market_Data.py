@@ -39,6 +39,9 @@ dbname = 'database-1'
 port = '5432'
 username = f.decrypt(file_list[2])
 password = f.decrypt(file_list[0])
+user_agent = f.decrypt(file_list[3])
+user_agent = user_agent.decode()
+print(user_agent)
 conn = None
 
 # Dynamic date and time  and convert to unix timestamp
@@ -50,7 +53,7 @@ unix_time = int(unix_time)
 url = 'https://query1.finance.yahoo.com/v7/finance/download/' + stock_symbol
 
 # Input Parameters For the API call
-headers = {'user-agent':None}
+headers = {'user-agent': 'Mozilla/5.0(Macintosh;IntelMacOSX10_15_7)AppleWebKit/537.36(KHTML,likeGecko)Chrome/96.0.4664.93Safari/537.36'}
 
 params = {'period1': unix_time,
           'period2': unix_time,
@@ -92,7 +95,7 @@ def connect_to_db_table_creation(host_name, username, password, port):
 
 
 # Function to call the API using request module. There is also data formatting using pandas
-def call_api(stock_list, url, headers, params):
+def call_api(stock_list, headers, params):
     for i, j in enumerate(stock_list):
         url = 'https://query1.finance.yahoo.com/v7/finance/download/' + j.decode()
         response = requests.get(url, headers=headers, params=params)
@@ -190,5 +193,5 @@ def connect_to_db_update_insert(host_name, username, password, port):
 # connect_to_db_table_creation(host_name, username, password, port)
 
 # Extract data using API and push the data to DB.
-pd_stock, new_header = call_api(stock_list, url, headers, params)
+pd_stock, new_header = call_api(stock_list, headers, params)
 connect_to_db_update_insert(host_name, username, password, port)
